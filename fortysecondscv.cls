@@ -246,7 +246,7 @@
 %                      GLOBAL LAYOUT AND HEADINGS STYLE
 %-------------------------------------------------------------------------------
 % remove headers and footers
-\pagestyle{empty}
+\pagestyle{plain}
 
 % globally disable paragraph indentation
 \setlength{\parindent}{0pt}
