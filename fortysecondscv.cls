@@ -262,21 +262,21 @@
 % \titleformat{<command>}[<shape>]{<format>}{<label>}{<sep>}{<before>}[<after>]
 \newcommand*{\cvsection}[1]{\section*{#1}}
 \titleformat{\section}%
-	{\color{sectioncolor}\normalfont\bfseries\LARGE}{}{0pt}{}
+{\color{sectioncolor}\normalfont\bfseries\LARGE}{}{0pt}{}
 \titlespacing*{\section}{0pt}{1.5ex}{1ex}
 
 % grey subsection style for right column
 \newcommand*{\cvsubsection}[1]{\subsection*{#1}}
 \titleformat{\subsection}%
-	{\color{subsectioncolor}\normalfont\large}{}{0pt}{}
+{\color{subsectioncolor}\normalfont\large}{}{0pt}{}
 
 % for compatibility with older versions
 \newcommand*{\profilesection}[1]{\subsubsection*{#1}}
 % abuse subsubsection as sidesection in left column
 \newcommand*{\sidesection}[1]{\subsubsection*{#1}}
 \titleformat{\subsubsection}%
-	{\color{pseccolor}\normalfont\sidesectionsize}{}{0pt}%
-	{\color{pseccolor}\sectionline}%
+{\color{pseccolor}\normalfont\sidesectionsize}{}{0pt}%
+{\color{pseccolor}\sectionline}%
 % set spaces before and after sidesections: <left><before><after>
 % "starred version kills the indentation of the paragraph following the title"
 \titlespacing*{\subsubsection}{0pt}{1ex}{1ex}
@@ -353,8 +353,10 @@
 \newcommand*{\cvsite}[1]{\cvcustomdata{\faGlobe}{\href{#1}{#1}}}
 \newcommand*{\cvmail}[1]{\cvcustomdata{\faAt}{\href{mailto:#1}{#1}}}
 \newcommand*{\cvkey}[2]{\cvcustomdata{\faKey}{%
-	\href{https://keyserver.ubuntu.com/pks/lookup?search=#2\&op=vindex\&fingerprint=on}{#1}%
-}}
+		\href{https://keyserver.ubuntu.com/pks/lookup?search=#2\&op=vindex\&fingerprint=on}{#1}%
+	}}
+
+
 
 % TODO find a cleaner solution for consistent spacing
 \newcommand{\nameandjob}{%
@@ -371,14 +373,14 @@
 		\begin{tikzpicture}[x=\profilepicsize, y=\profilepicsize]
 			\begin{scope}
 				\path[clip]
-					(0, 0) [sharp corners] --
-					(0, 1) [rounded corners=\profilepicrounding] --
-					(1, 1) [sharp corners] --
-					(1, 0) [rounded corners=\profilepicrounding] -- cycle;
+				(0, 0) [sharp corners] --
+				(0, 1) [rounded corners=\profilepicrounding] --
+				(1, 1) [sharp corners] --
+				(1, 0) [rounded corners=\profilepicrounding] -- cycle;
 				\node[anchor=center, inner sep=0pt, xshift=\profilepicxshift,
-						yshift=\profilepicyshift] (profilepic) at (0.5, 0.5)
-					{\includegraphics[width=\profilepiczoom\profilepicsize]
-						{\cvprofilepic}};
+					yshift=\profilepicyshift] (profilepic) at (0.5, 0.5)
+				{\includegraphics[width=\profilepiczoom\profilepicsize]
+					{\cvprofilepic}};
 			\end{scope}
 			\ifdim \profilepicborderwidth > 0pt
 				\begin{scope}
@@ -399,15 +401,15 @@
 			\begin{scope}
 				\clip (0, 0) circle (0.5);
 				\node[anchor=center, inner sep=0pt, outer sep=0pt,
-						xshift=\profilepicxshift, yshift=\profilepicyshift]
-					(profilepic) at (0,0) {
-				\includegraphics[width=\profilepiczoom\profilepicsize]
+					xshift=\profilepicxshift, yshift=\profilepicyshift]
+				(profilepic) at (0,0) {
+					\includegraphics[width=\profilepiczoom\profilepicsize]
 					{\cvprofilepic}};
 			\end{scope}
 			\ifdim \profilepicborderwidth > 0pt
 				\begin{scope}
 					\draw[line width=\profilepicborderwidth, color=iconcolor]
-						(0, 0) circle (0.5\profilepicsize);
+					(0, 0) circle (0.5\profilepicsize);
 				\end{scope}
 			\fi
 		\end{tikzpicture}
@@ -418,15 +420,15 @@
 % \icontable{<width 1st column>}{<space between columns>}{<arraystretch>}
 \newenvironment{icontable}[3][1]%
 {%
-	\renewcommand{\arraystretch}{#1}% increase linespacing in tables; default=1
-	\iftoggle{tshowframes}{%
-		% https://tex.stackexchange.com/a/42331
-		\tabularx{\sidebartextwidth}{|m{#2} | @{\hskip #3} | X|} \hline%
-	}{%
-		\tabularx{\sidebartextwidth}{m{#2} @{\hskip #3} X}%
-	}
+\renewcommand{\arraystretch}{#1}% increase linespacing in tables; default=1
+\iftoggle{tshowframes}{%
+% https://tex.stackexchange.com/a/42331
+\tabularx{\sidebartextwidth}{|m{#2} | @{\hskip #3} | X|} \hline%
 }{%
-	\endtabularx%
+\tabularx{\sidebartextwidth}{m{#2} @{\hskip #3} X}%
+}
+}{%
+\endtabularx%
 }
 
 % icon style for personal information
@@ -462,22 +464,22 @@
 \NewDocumentCommand{\pointskill}{ O{0em} m m m O{5} }{%
 	\hspace{#1} \cvicon{#2} ~ \sidetext{#3} \hfill%
 	\foreach \x in {1,...,#5}{%
-		\space%
-		{\ifnumgreater{\x}{#4}{\color{skillbg}}{\color{iconcolor}}% from etoolbox
-		% don't use totalheight; see https://tex.stackexchange.com/a/41014
-		\raisebox{0.5\height-0.4ex}{\scriptsize\faCircle}%
-		}
-	}\par%
+			\space%
+			{\ifnumgreater{\x}{#4}{\color{skillbg}}{\color{iconcolor}}% from etoolbox
+				% don't use totalheight; see https://tex.stackexchange.com/a/41014
+				\raisebox{0.5\height-0.4ex}{\scriptsize\faCircle}%
+			}
+		}\par%
 }
 
 \newcommand{\barskill}[4][1ex]{
 	% remove 1pt in width to prevent overfull box warnings
 	\begin{tikzpicture}[x=\sidebartextwidth-1pt, y=#1]
-			\draw[fill, skillbg, rounded corners=0.25em]
-				(0, 0) rectangle (1, 1);
-			\draw[fill, iconcolor!70, rounded corners=0.25em]
-				(0, 0) rectangle (#4/100, 1);
-			\node[above right] at (0, 1) {\cvicon{#2} ~ \sidetext{#3}};
+		\draw[fill, skillbg, rounded corners=0.25em]
+		(0, 0) rectangle (1, 1);
+		\draw[fill, iconcolor!70, rounded corners=0.25em]
+		(0, 0) rectangle (#4/100, 1);
+		\node[above right] at (0, 1) {\cvicon{#2} ~ \sidetext{#3}};
 	\end{tikzpicture}
 	\par
 }
@@ -492,23 +494,23 @@
 % label for wheel charts
 \newcommand{\chartlabel}[2][skillbg]{%
 	\begin{tikzpicture}
-	\node[
-		fill=#1!25, % interior color
-		anchor=base,
-		draw=#1, % line color
-		rounded corners,
-		inner xsep=1ex, % distance from left/right border to text
-		inner ysep=0.75ex, % distance top/bottom border to text
-		text height=1.5ex, % align text vertically in box (at least as resulting
-		text depth=.25ex   % effect)
-	]{\sidetext{#2}};%
+		\node[
+			fill=#1!25, % interior color
+			anchor=base,
+			draw=#1, % line color
+			rounded corners,
+			inner xsep=1ex, % distance from left/right border to text
+			inner ysep=0.75ex, % distance top/bottom border to text
+			text height=1.5ex, % align text vertically in box (at least as resulting
+			text depth=.25ex   % effect)
+		]{\sidetext{#2}};%
 	\end{tikzpicture}
 }
 
 
 \newenvironment{sidebarminipage}%
-	{\begin{minipage}{\sidebartextwidth}}%
-	{\end{minipage}}%
+{\begin{minipage}{\sidebartextwidth}}%
+		{\end{minipage}}%
 
 
 \newenvironment{memberships}[1][1em]%
@@ -534,9 +536,9 @@
 	% Calculate total
 	\pgfmathsetmacro{\totalnum}{0}%
 	\foreach\value/\colour/\name in {#4} {%
-		\pgfmathparse{\value+\totalnum}%
-		\global\let\totalnum=\pgfmathresult%
-	}%
+			\pgfmathparse{\value+\totalnum}%
+			\global\let\totalnum=\pgfmathresult%
+		}%
 	\begin{tikzpicture}
 
 		% Calculate the thickness and the middle line of the wheel
@@ -545,51 +547,51 @@
 
 		% Rotate so we start from the top
 		\begin{scope}[rotate=#1, on background layer]
-		% Loop through each value set. \cumnum keeps track of where we are in the
-		% wheel
-		\pgfmathsetmacro{\cumnum}{0}
-		\foreach \value/\width/\colour/\name in {#4} {
-			\pgfmathsetmacro{\newcumnum}{\cumnum + \value/\totalnum*360}
+			% Loop through each value set. \cumnum keeps track of where we are in the
+			% wheel
+			\pgfmathsetmacro{\cumnum}{0}
+			\foreach \value/\width/\colour/\name in {#4} {
+					\pgfmathsetmacro{\newcumnum}{\cumnum + \value/\totalnum*360}
 
-			% Calculate the percent value
-			\pgfmathsetmacro{\percentage}{\value/\totalnum*100}
-			% Calculate the mid angle of the colour segments to place the labels
-			\pgfmathsetmacro{\midangle}{-(\cumnum+\newcumnum)/2}
+					% Calculate the percent value
+					\pgfmathsetmacro{\percentage}{\value/\totalnum*100}
+					% Calculate the mid angle of the colour segments to place the labels
+					\pgfmathsetmacro{\midangle}{-(\cumnum+\newcumnum)/2}
 
-			% This is necessary for the labels to align nicely
-			\pgfmathparse{
-				(-\midangle>180?"west":"east")
-			} \edef\textanchor{\pgfmathresult}
-			\pgfmathparse{
-				(-\midangle>180?"flush left":"flush right")
-			} \edef\textalign{\pgfmathresult}
-			\pgfmathsetmacro\labelshiftdir{1-2*(-\midangle<180)}
+					% This is necessary for the labels to align nicely
+					\pgfmathparse{
+						(-\midangle>180?"west":"east")
+					} \edef\textanchor{\pgfmathresult}
+					\pgfmathparse{
+						(-\midangle>180?"flush left":"flush right")
+					} \edef\textalign{\pgfmathresult}
+					\pgfmathsetmacro\labelshiftdir{1-2*(-\midangle<180)}
 
-			% Draw the color segments. Somehow, the \midrow units got lost, so
-			% we add 'pt' at the end. Not nice...
-			\filldraw[draw=white,fill=\colour]
-				(-\cumnum:\outerradius)
-				arc (-\cumnum:-(\newcumnum):\outerradius)
-				-- (-\newcumnum:\innerradius)
-				arc (-\newcumnum:-(\cumnum):\innerradius)
-				-- cycle;
+					% Draw the color segments. Somehow, the \midrow units got lost, so
+					% we add 'pt' at the end. Not nice...
+					\filldraw[draw=white,fill=\colour]
+					(-\cumnum:\outerradius)
+					arc (-\cumnum:-(\newcumnum):\outerradius)
+					-- (-\newcumnum:\innerradius)
+					arc (-\newcumnum:-(\cumnum):\innerradius)
+					-- cycle;
 
-			% Draw the data labels
-			\draw [*-,thin,wheelchartlabelcolor] node [append after command={
-				(\midangle:\midradius pt) --
-				(\midangle:\outerradius + 1ex) --
-				(\tikzlastnode)}] at (\midangle:\outerradius + 1ex) [
-				xshift=\labelshiftdir*0.5cm,inner sep=1ex,
-				outer sep=0pt,
-				text width=\width,
-				anchor=\textanchor,
-				align=\textalign,
-				font=\small,
-				text=wheeltextcolor
-			]{\name};
-			% Set the old cumulated angle to the new value
-			\global\let\cumnum=\newcumnum
-		}
+					% Draw the data labels
+					\draw [*-,thin,wheelchartlabelcolor] node [append after command={
+								(\midangle:\midradius pt) --
+								(\midangle:\outerradius + 1ex) --
+								(\tikzlastnode)}] at (\midangle:\outerradius + 1ex) [
+						xshift=\labelshiftdir*0.5cm,inner sep=1ex,
+						outer sep=0pt,
+						text width=\width,
+						anchor=\textanchor,
+						align=\textalign,
+						font=\small,
+						text=wheeltextcolor
+					]{\name};
+					% Set the old cumulated angle to the new value
+					\global\let\cumnum=\newcumnum
+				}
 		\end{scope}
 	\end{tikzpicture}\par
 }
@@ -639,14 +641,14 @@
 % instead of \setlength{\TPHorizModule}{<dimen>}, which seems to be "absolute"
 % as opposed to "relative" - strange but true.
 \newenvironment{sidebar}{%
-	\drawSidebarBG%
-	\ifthenelse{\equal{\sidebarplacement}{right}}{%
-		\begin{textblock*}{\sidebartextwidth}%
-			(\paperwidth - \sidebarwidth + \leftrightmargin, \topbottommargin)
-	}{% else
-		\begin{textblock*}{\sidebartextwidth}(\leftrightmargin, \topbottommargin)
-	}%
-}{%
+\drawSidebarBG%
+\ifthenelse{\equal{\sidebarplacement}{right}}{%
+	\begin{textblock*}{\sidebartextwidth}%
+	(\paperwidth - \sidebarwidth + \leftrightmargin, \topbottommargin)
+}{% else
+	\begin{textblock*}{\sidebartextwidth}(\leftrightmargin, \topbottommargin)
+		}%
+		}{%
 	\end{textblock*}%
 }
 
@@ -674,10 +676,11 @@
 		\vspace{1ex}
 
 		% name and job
-		\nameandjob
+		% \nameandjob
 
 		% personal information
 		\vspace*{0.5em}
+		\sidesection{Contact}
 		\begin{icontable}[1.6]{1.7em}{0.4em}
 			\personaldata
 		\end{icontable}
@@ -716,15 +719,15 @@
 	\setlength{\LTpost}{0pt}
 	\iftoggle{tshowframes}{%
 		\begin{longtabu} to \textwidth {@{\extracolsep{\fill}}|l|l|}%
-		\hline%
-	}{%
-		\begin{longtabu} to \textwidth {@{\extracolsep{\fill}}ll}%
-	}
-}{%
-	\iftoggle{tshowframes}{%
-		\hline%
-		\end{longtabu}%
-	}{%
+			\hline%
+			}{%
+			\begin{longtabu} to \textwidth {@{\extracolsep{\fill}}ll}%
+				}
+				}{%
+				\iftoggle{tshowframes}{%
+				\hline%
+			\end{longtabu}%
+			}{%
 		\end{longtabu}%
 	}
 }

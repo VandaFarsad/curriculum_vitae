@@ -1,0 +1,58 @@
+\documentclass[tikz,border=5]{standalone}
+\renewcommand\familydefault\sfdefault
+\usepackage{filecontents}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepgfplotslibrary{colormaps}
+\usepackage{color}
+
+\pgfplotstableset{col sep=comma} % delete old file when you change values
+\begin{filecontents}[overwrite]{./programming.csv}
+language,years
+SQL, 4 
+Python, 5
+Docker, 4
+TypeScript,3
+C\texttt{++}, 2
+Kubernetes, 3
+Gitlab, 3
+\end{filecontents}
+
+\pgfplotstableread{programming.csv}\data
+\pgfplotstablegetrowsof{\data}
+\pgfmathsetmacro{\nrows}{int(\pgfplotsretval-1)}  
+\pgfmathsetmacro{\step}{360/\pgfplotsretval}  
+
+\pgfplotsset{colormap/hsv}
+\tikzset{%
+  sector/.style={
+    /utils/exec=\pgfmathparse{int(#1/\nrows*900+50)}%
+      \pgfplotscolormapdefinemappedcolor{\pgfmathresult},
+    top color=mapped color!75!black,
+    bottom color=mapped color,
+    shading angle=#1*\step+\step/2-90,
+    draw=white,
+    very thick
+  }
+}
+\begin{document}
+\begin{tikzpicture}
+
+  \foreach \i [evaluate={\j=\i+1;}] in {0,...,\nrows}{
+      \pgfplotstablegetelem{\i}{language}\of{\data}\let\language=\pgfplotsretval
+      \pgfplotstablegetelem{\i}{years}\of{\data}\let\years=\pgfplotsretval
+      \pgfmathsetmacro\years{\years/2}
+      \path [sector=\i] (\i*\step:1) (\i*\step:1+\years)
+      arc (\i*\step:\j*\step:1+\years) -- (\j*\step:1)
+      arc (\j*\step:\i*\step:1) -- cycle;
+      \pgfmathparse{int(\years>2)}
+      \ifnum\pgfmathresult=1
+        \node [opacity=.8,fill=white,text=black, font=\bfseries]
+        at (\i*\step+\step/2:1+\years/2) {\Large\language};
+      \else
+        \node [opacity=.8,text=black, font=\bfseries]
+        at (\i*\step+\step/2:1+\years+1/2) {\Large\language};
+      \fi
+    }
+\end{tikzpicture}
+\end{document}
