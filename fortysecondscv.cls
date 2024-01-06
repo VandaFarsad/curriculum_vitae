@@ -680,7 +680,7 @@
 
 		% personal information
 		\vspace*{0.5em}
-		\sidesection{Contact}
+		\sidesection{Kontakt}
 		\begin{icontable}[1.6]{1.7em}{0.4em}
 			\personaldata
 		\end{icontable}
