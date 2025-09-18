@@ -22,36 +22,22 @@
 %-------------------------------------------------------------------------------
 \documentclass[
 	a4paper,
-	% 9pt,
-	% sidesectionsize=Large,
-	% showframes,
-	% vline=2.2em,
-	% maincolor=cvgreen,
-	% sidecolor=gray!50,
-	% sidetextcolor=green,
-	% sectioncolor=red,
-	% subsectioncolor=orange,
-	itemtextcolor=black!70,
-	% sidebarwidth=0.4\paperwidth,
-	% topbottommargin=0.03\paperheight,
-	% leftrightmargin=20pt,
-	% profilepicsize=4.5cm,
-	profilepicborderwidth=2.5pt,
+	9pt,
+	sidesectionsize=Large,
+	itemtextcolor=black!75,
+	sidebarwidth=0.36\paperwidth,
+	topbottommargin=0.025\paperheight,
+	leftrightmargin=15pt,
+	profilepicsize=4.2cm,
+	profilepicborderwidth=2pt,
 	profilepicstyle=profilecircle,
-	profilepiczoom=1.1,
-	% profilepicxshift=0mm,
-	% profilepicyshift=0mm,
-	% profilepicrounding=1.0cm,
-	% logowidth=4.5cm,
-	% logospace=5mm,
-	% logoposition=before,
-	% sidebarplacement=right,
-	% datecolwidth=0.22\textwidth,
+	profilepiczoom=1.05,
+	datecolwidth=0.2\textwidth,
 ]{fortysecondscv}
 
 % fine tune line spacing
-% \usepackage{setspace}
-% \setstretch{1.1}
+\usepackage{setspace}
+\setstretch{1.05}
 
 % improve word spacing and hyphenation
 \usepackage{microtype}
@@ -72,18 +58,6 @@
 
 % use a sans serif font as default
 \usepackage[sfdefault]{ClearSans}
-% \usepackage[sfdefault]{noto}
-
-% multi-language CV XeLaTeX and polyglossia (should also work with LuaLaTeX)
-% NOTE: breaks \pointskill, \membership and some spacings
-% \ifxetexorluatex
-% 	\usepackage{polyglossia}
-% 	\newfontfamily\arabicfontsf[Script=Arabic,Scale=1.5]{Amiri}
-% 	\newfontfamily\englishfontsf{Clear Sans}
-% 	\setmainfont{Amiri}
-% 	\setdefaultlanguage{arabic}
-% 	\setotherlanguage{english}
-% \fi
 
 % enable mathematical syntax for some symbols like \varnothing
 \usepackage{amssymb}
@@ -93,11 +67,11 @@
 \smartdiagramset{
 	% default font size is \large, so adjust to harmonize with sidebar layout
 	bubble center node font = \footnotesize,
-	bubble node font = \footnotesize,
+	bubble node font = \scriptsize,
 	% default: 4cm/2.5cm; make minimum diameter relative to sidebar size
-	bubble center node size = 0.4\sidebartextwidth,
-	bubble node size = 0.25\sidebartextwidth,
-	distance center/other bubbles = 1.5em,
+	bubble center node size = 0.35\sidebartextwidth,
+	bubble node size = 0.22\sidebartextwidth,
+	distance center/other bubbles = 1.3em,
 	% set center bubble color
 	bubble center node color = maincolor!70,
 	% define the list of colors usable in the diagram
@@ -109,9 +83,9 @@
 
 \newcommand{\intro}[3]{%
 	{\Huge\color{sectioncolor}{#1}}\par%
-	\setlength{\parskip}{2ex}
+	\setlength{\parskip}{1.8ex}
 	{\Large\color{black!80}{#2}}\par%
-	\setlength{\parskip}{1ex}
+	\setlength{\parskip}{0.8ex}
 	\parbox[b]{\linewidth}{\textcolor{itemtextcolor}{#3}}
 }
 
@@ -139,15 +113,9 @@
 \cvaddress{Am Inselpark, 21109 Hamburg}
 % phone number
 \cvphone{+49 172 289 08 37}
-% personal website
-% email address
-\cvmail{v.farsad@initial-commit.com}
-% pgp key
-% \cvkey{4096R/FF00FF00}{0xAABBCCDDFF00FF00}
-% any other custom entry
 % \cvsite{www.initial-commit.com}
-% \cvcustomdata{\faGithub}{\href{https://github.com/VandaFarsad}{github.com/vandafarsad}}
-% \cvcustomdata{\faLinkedin}{\href{https://github.com/VandaFarsad}{github.com/vandafarsad}}
+\cvmail{v.farsad@initial-commit.com}
+% \cvsite{www.initial-commit.com}
 
 %-------------------------------------------------------------------------------
 %                              SIDEBAR 1st PAGE
@@ -166,7 +134,7 @@
 
 	% social network accounts incl. proper hyperlinks
 	\sidesection{Links}
-		\begin{icontable}[1.5]{2.5em}{1em}
+		\begin{icontable}[1.3]{2.2em}{0.8em}
 			\social{\faGlobe}
 				{https://www.initial-commit.com}
 				{Home Page}
@@ -180,7 +148,7 @@
 		
 	\sidesection{Stack}
 	\begin{figure}\centering
-		\includegraphics[scale=0.65]{pics/diagrams/stack.pdf}
+		\includegraphics[scale=0.72]{pics/diagrams/stack.pdf}
 	\end{figure}
 
 	\sidesection{Frameworks}
@@ -193,18 +161,6 @@
 	\pointskill{\flag{DE.png}}{German}{5}
 	\pointskill{\flag{GB.png}}{English}{3}
 	\pointskill{\flag{IR.png}}{Persian}{2}
-
-% 	\sidesection{Hard Skills}
-% 		\skill{\faBalanceScale}{Sleeping almost all day}
-% 		\skill{\faSitemap}{Eating a lot of bamboo sprouts}
-% 		\skill{\faGraduationCap}{Relaxing rest of the day}
-
-	% \sidesection{Soft Skills}
-% 		\pointskill{\faHome}{Looking Cute}{4}[4]
-% 			\skill[1.8em]{\faCompress}{No need to specify further}
-% 		\pointskill{\faChild}{Chillin' hard}{3}[4]
-% 			\skill[1.8em]{\faCompress}{On a tree}
-% 			\skill[1.8em]{\faCompress}{In the grass}
 
 }
 
@@ -279,7 +235,7 @@
 
 \makefrontsidebar
 
-\newgeometry{left=3in, right=0.25in, top=0.75in, bottom=0.5in}
+\newgeometry{left=3.1in, right=0.3in, top=0.75in, bottom=0.5in}
 
 \intro{\name}{\jobtitle}{
 	Hey! With my expertise in Python, solid frontend development experience, and a versatile understanding of DevOps, 
@@ -323,7 +279,7 @@
 	}
 	\cvitem{2009 -- 2013}{Master of Science $\bullet$ Mathematics ($\varnothing\, 1,5$)}{TU Darmstadt}
 	{Focus: Geometry, Nuclear Physics and Operator Algebra}
-	\cvitem{2005 -- 209}{Diploma $\bullet$ Applied Mathematics ($\varnothing\, 1,3$)}{Hochschule Darmstadt}
+	\cvitem{2005 -- 209}{Diploma $\bullet$ Appl. Mathematics ($\varnothing\, 1,3$)}{Hochschule Darmstadt}
 	{Focus: Numerical Mathematics and Computer Science (C\texttt{++})}
 \end{cvtable}
 
